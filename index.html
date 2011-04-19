@@ -1,0 +1,37 @@
+---
+layout: default
+title: Donnior's Blog
+---
+
+<section id="posts-wraper" >				
+	<p id="caption">
+		<span>订阅更新</span><a href="http://feeds.feedburner.com/donnior" class="feed">RSS</a>
+	</p>
+			
+			
+	{% for post in  paginator.posts %}
+	<article id="content-{{post.identifier}}" class="article">
+		<header class="article-h">
+			<span class="article-time" title="{{ post.date }}">{{ post.date | date: "%m/%d" }}</span>
+			<h2><a href="{{ post.url }}">{{post.title}}</a></h2>
+		</header>
+		{{ post.content }}
+	</article>
+	{% endfor %}
+	
+	<nav class="article-nav clearfix"> 
+		 {% if paginator.previous_page == 1 %}
+			<a class="pre-article" href='/'> ←&nbsp;Previous Page </a> 
+		  {% elsif paginator.previous_page %}
+		   <a class="pre-article" href='/page{{ paginator.previous_page }}'> ←&nbsp;Previous Page </a> 
+		  {% endif %}
+		  {% if paginator.next_page %}
+		<a class="next-article" href='/page{{ paginator.next_page }}'>Next Page&nbsp;→ </a> 					
+		  {% endif %}
+	</nav> 
+					
+</section> 
+			
+<aside id="sidebar-wraper">
+
+</aside>
